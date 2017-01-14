@@ -1,5 +1,23 @@
 import React from 'react';
 import { render } from 'react-dom';
-import App from './index';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 
-render(<App {...window.__APP_INITIAL_STATE__} />, document.getElementById('root'));
+import App from './index';
+import reducers from './reducers';
+
+const initialState = window.__APP_INITIAL_STATE__;
+const store = createStore(reducers, initialState);
+
+function run() {
+  const state = store.getState();
+  render(
+    <Provider>
+      <App state={state} />
+    </Provider>,
+    document.getElementById('root')
+  );
+}
+
+run();
+store.subscribe(run);

@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 
 export default class extends Component {
   render() {
-    const { isMobile } = this.props;
-
+    console.log(this.props.state);
     return (
       <div>
-        <h1>Hello world {isMobile ? 'mobile' : 'desktop'}</h1>
+        <h1>Hello world {this.props.state}</h1>
       </div>
     );
   }
