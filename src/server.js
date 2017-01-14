@@ -17,7 +17,7 @@ server.get('/', (req, res) => {
   const initialState = store.getState();
   const appString = renderToString(
     <Provider store={store}>
-      <App />
+      <App state={initialState} />
     </Provider>
   );
 

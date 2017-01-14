@@ -11,8 +11,9 @@ const store = createStore(reducers, initialState);
 
 function run() {
   const state = store.getState();
+  console.log(state);
   render(
-    <Provider>
+    <Provider store={store}>
       <App state={state} />
     </Provider>,
     document.getElementById('root')
@@ -21,3 +22,9 @@ function run() {
 
 run();
 store.subscribe(run);
+window.add = () => {
+  store.dispatch({ type: 'INCREMENT', data: 1 });
+};
+window.decrement = () => {
+  store.dispatch({ type: 'DECREMENT', data: 2 });
+};
